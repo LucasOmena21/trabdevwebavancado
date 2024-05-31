@@ -1,5 +1,6 @@
 package org.example.sbccmsapi.controllers;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.example.sbccmsapi.dtos.requests.CriarEventoRequest;
 import org.example.sbccmsapi.dtos.responses.ObterEventosResponse;
 import org.example.sbccmsapi.servicos.EventoService;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Objects;
 
+@Tag(name = "Evento", description = "Gerencia os eventos")
 @RestController
 @RequestMapping("/eventos")
 public class EventoController {

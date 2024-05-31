@@ -1,5 +1,6 @@
 package org.example.sbccmsapi.controllers;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.example.sbccmsapi.dtos.requests.CriarAtividadeRequest;
 import org.example.sbccmsapi.dtos.responses.ObterAtividadeResponse;
 import org.example.sbccmsapi.servicos.AtividadeService;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Objects;
 
+@Tag(name = "Atividade", description = "Gerencia as atividades de uma edição")
 @RestController
 @RequestMapping("/eventos/{eventoId}/edicoes/{edicaoId}/atividades")
 public class AtividadeController {

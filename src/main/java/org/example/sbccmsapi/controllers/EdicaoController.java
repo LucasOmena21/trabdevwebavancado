@@ -1,5 +1,6 @@
 package org.example.sbccmsapi.controllers;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.example.sbccmsapi.dtos.requests.ConfigurarOrganizadorRequest;
 import org.example.sbccmsapi.dtos.requests.CriarEdicaoRequest;
 import org.example.sbccmsapi.dtos.responses.ObterEdicoesResponse;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Objects;
 
+@Tag(name = "Edição", description = "Gerencia as edições de um evento")
 @RestController
 @RequestMapping("/eventos/{eventoId}/edicoes")
 public class EdicaoController {

@@ -2,6 +2,7 @@ package org.example.sbccmsapi.entidades;
 
 import jakarta.persistence.*;
 import org.example.sbccmsapi.dtos.requests.CriarUsuarioRequest;
+import org.example.sbccmsapi.dtos.responses.ObterUsuariosResponse;
 
 import java.util.List;
 
@@ -49,6 +50,14 @@ public class Usuario {
         request.afiliacao(),
         false,
         null
+    );
+  }
+
+  public static ObterUsuariosResponse toResponse(Usuario usuario) {
+    return new ObterUsuariosResponse(
+        usuario.getId(),
+        usuario.getNome(),
+        usuario.getEmail()
     );
   }
 

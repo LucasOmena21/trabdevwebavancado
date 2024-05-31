@@ -1,5 +1,6 @@
 package org.example.sbccmsapi.controllers;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.example.sbccmsapi.dtos.requests.CriarEspacoRequest;
 import org.example.sbccmsapi.dtos.responses.ObterEspacoResponse;
 import org.example.sbccmsapi.servicos.EspacoService;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Objects;
 
+@Tag(name = "Espaço", description = "Gerencia os espaços")
 @RestController
 @RequestMapping("/espacos")
 public class EspacoController {

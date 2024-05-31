@@ -1,9 +1,12 @@
 package org.example.sbccmsapi.servicos;
 
 import org.example.sbccmsapi.dtos.requests.CriarUsuarioRequest;
+import org.example.sbccmsapi.dtos.responses.ObterUsuariosResponse;
 import org.example.sbccmsapi.entidades.Usuario;
 import org.example.sbccmsapi.repositorios.AtividadeRepository;
 import org.example.sbccmsapi.repositorios.UsuarioRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
@@ -16,6 +19,12 @@ public class UsuarioService {
   public UsuarioService(final UsuarioRepository repository, final AtividadeRepository atividadeRepository) {
     this.repository = Objects.requireNonNull(repository);
     this.atividadeRepository = Objects.requireNonNull(atividadeRepository);
+  }
+
+  public Page<ObterUsuariosResponse> obterTodosPaginado(final Pageable pageable) {
+    return repository
+        .findAll(pageable)
+        .map(Usuario::toResponse);
   }
 
   public void criar(final CriarUsuarioRequest request) {

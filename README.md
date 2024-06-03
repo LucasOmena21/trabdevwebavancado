@@ -11,6 +11,7 @@ A API oferece os seguintes recursos:
 * Excluir um evento
 * Criar um novo evento
 * Obter uma lista paginada de eventos
+
 #Edições
 * Obter uma edição específica de um evento
 * Editar uma edição existente
@@ -18,18 +19,21 @@ A API oferece os seguintes recursos:
 * Obter uma lista paginada de edições de um evento
 * Criar uma nova edição
 * Configurar o organizador de uma edição
+
 #Atividades
 * Obter uma atividade específica de uma edição
 * Editar uma atividade existente
 * Excluir uma atividade
 * Obter uma lista paginada de atividades de uma edição
 * Criar uma nova atividade
+
 #Espaços
 * Obter um espaço específico
 * Editar um espaço existente
 * Excluir um espaço
 * Obter uma lista paginada de espaços
 * Criar um novo espaço
+
 #Usuários
 * Obter uma lista paginada de usuários
 * Criar um novo usuário

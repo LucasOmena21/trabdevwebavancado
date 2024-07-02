@@ -1,6 +1,7 @@
 package org.example.sbccmsapi.controllers;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.example.sbccmsapi.dtos.requests.CriarAtividadeRequest;
 import org.example.sbccmsapi.dtos.responses.ObterAtividadeResponse;
 import org.example.sbccmsapi.servicos.AtividadeService;
@@ -42,22 +43,39 @@ public class AtividadeController {
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<ObterAtividadeResponse> obter(@PathVariable("eventoId") final Long eventoId, @PathVariable("edicaoId") final Long edicaoId, @PathVariable final Long id) {
+  public ResponseEntity<ObterAtividadeResponse> obter(
+      @PathVariable("eventoId") final Long eventoId,
+      @PathVariable("edicaoId") final Long edicaoId,
+      @PathVariable final Long id
+  ) {
     return ResponseEntity.ok(service.obter(eventoId, edicaoId, id));
   }
 
   @PostMapping
-  public void criar(@PathVariable("eventoId") final Long eventoId, @PathVariable("edicaoId") final Long edicaoId, @RequestBody final CriarAtividadeRequest request) {
+  public void criar(
+      @PathVariable("eventoId") final Long eventoId,
+      @PathVariable("edicaoId") final Long edicaoId,
+      @Valid @RequestBody final CriarAtividadeRequest request
+  ) {
     service.criar(request, eventoId, edicaoId);
   }
 
   @PutMapping("/{id}")
-  public void editar(@PathVariable("eventoId") final Long eventoId, @PathVariable("edicaoId") final Long edicaoId, @PathVariable final Long id, @RequestBody final CriarAtividadeRequest request) {
+  public void editar(
+      @PathVariable("eventoId") final Long eventoId,
+      @PathVariable("edicaoId") final Long edicaoId,
+      @PathVariable final Long id,
+      @Valid @RequestBody final CriarAtividadeRequest request
+  ) {
     service.editar(eventoId, edicaoId, id, request);
   }
 
   @DeleteMapping("/{id}")
-  public void deletar(@PathVariable("eventoId") final Long eventoId, @PathVariable("edicaoId") final Long edicaoId, @PathVariable final Long id) {
+  public void deletar(
+      @PathVariable("eventoId") final Long eventoId,
+      @PathVariable("edicaoId") final Long edicaoId,
+      @PathVariable final Long id
+  ) {
     service.deletar(eventoId, edicaoId, id);
   }
 }

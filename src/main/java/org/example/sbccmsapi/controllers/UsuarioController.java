@@ -1,6 +1,7 @@
 package org.example.sbccmsapi.controllers;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.example.sbccmsapi.dtos.requests.CriarUsuarioRequest;
 import org.example.sbccmsapi.dtos.requests.FavoritarRequest;
 import org.example.sbccmsapi.dtos.responses.ObterUsuariosResponse;
@@ -42,17 +43,23 @@ public class UsuarioController {
   }
 
   @PostMapping
-  public void criar(@RequestBody final CriarUsuarioRequest request) {
+  public void criar(@Valid @RequestBody final CriarUsuarioRequest request) {
     service.criar(request);
   }
 
   @PostMapping("/{id}/favoritar")
-  public void favoritar(@PathVariable final Long id, @RequestBody final FavoritarRequest request) {
+  public void favoritar(
+      @PathVariable final Long id,
+      @Valid @RequestBody final FavoritarRequest request
+  ) {
     service.favoritar(id, request.atividadeId());
   }
 
   @PostMapping("/{id}/desfavoritar")
-  public void desfavoritar(@PathVariable final Long id, @RequestBody final FavoritarRequest request) {
+  public void desfavoritar(
+      @PathVariable final Long id,
+      @Valid @RequestBody final FavoritarRequest request
+  ) {
     service.desfavoritar(id, request.atividadeId());
   }
 }

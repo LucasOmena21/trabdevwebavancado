@@ -1,6 +1,7 @@
 package org.example.sbccmsapi.controllers;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.example.sbccmsapi.dtos.requests.CriarEventoRequest;
 import org.example.sbccmsapi.dtos.responses.ObterEventosResponse;
 import org.example.sbccmsapi.servicos.EventoService;
@@ -45,12 +46,15 @@ public class EventoController {
   }
 
   @PostMapping
-  public void criar(@RequestBody final CriarEventoRequest request) {
+  public void criar(@Valid @RequestBody final CriarEventoRequest request) {
     service.criar(request);
   }
 
   @PutMapping("/{id}")
-  public void editar(@PathVariable Long id, @RequestBody final CriarEventoRequest request) {
+  public void editar(
+      @PathVariable Long id,
+      @Valid @RequestBody final CriarEventoRequest request
+  ) {
     service.editar(id, request);
   }
 

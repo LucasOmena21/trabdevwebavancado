@@ -1,6 +1,7 @@
 package org.example.sbccmsapi.controllers;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.example.sbccmsapi.dtos.requests.ConfigurarOrganizadorRequest;
 import org.example.sbccmsapi.dtos.requests.CriarEdicaoRequest;
 import org.example.sbccmsapi.dtos.responses.ObterEdicoesResponse;
@@ -41,27 +42,44 @@ public class EdicaoController {
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<ObterEdicoesResponse> obter(@PathVariable("eventoId") final Long eventoId, @PathVariable final Long id) {
+  public ResponseEntity<ObterEdicoesResponse> obter(
+      @PathVariable("eventoId") final Long eventoId,
+      @PathVariable final Long id
+  ) {
     return ResponseEntity.ok(service.obter(eventoId, id));
   }
 
   @PostMapping
-  public void criar(@PathVariable("eventoId") final Long eventoId, @RequestBody final CriarEdicaoRequest request) {
+  public void criar(
+      @PathVariable("eventoId") final Long eventoId,
+      @Valid @RequestBody final CriarEdicaoRequest request
+  ) {
     service.criar(eventoId, request);
   }
 
   @PutMapping("/{id}")
-  public void editar(@PathVariable("eventoId") final Long eventoId, @PathVariable final Long id, @RequestBody final CriarEdicaoRequest request) {
+  public void editar(
+      @PathVariable("eventoId") final Long eventoId,
+      @PathVariable final Long id,
+      @Valid @RequestBody final CriarEdicaoRequest request
+  ) {
     service.editar(eventoId, id, request);
   }
 
   @DeleteMapping("/{id}")
-  public void deletar(@PathVariable("eventoId") final Long eventoId, @PathVariable final Long id) {
+  public void deletar(
+      @PathVariable("eventoId") final Long eventoId,
+      @PathVariable final Long id
+  ) {
     service.deletar(eventoId, id);
   }
 
   @PostMapping("/{id}/organizador")
-  public void configurarOrganizador(@PathVariable("eventoId") final Long eventoId, @PathVariable final Long id, @RequestBody final ConfigurarOrganizadorRequest request) {
+  public void configurarOrganizador(
+      @PathVariable("eventoId") final Long eventoId,
+      @PathVariable final Long id,
+      @Valid @RequestBody final ConfigurarOrganizadorRequest request
+  ) {
     service.configurarOrganizador(eventoId, id, request.organizadorId());
   }
 }

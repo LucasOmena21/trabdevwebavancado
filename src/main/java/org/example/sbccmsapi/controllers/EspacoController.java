@@ -1,6 +1,7 @@
 package org.example.sbccmsapi.controllers;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.example.sbccmsapi.dtos.requests.CriarEspacoRequest;
 import org.example.sbccmsapi.dtos.responses.ObterEspacoResponse;
 import org.example.sbccmsapi.servicos.EspacoService;
@@ -44,12 +45,15 @@ public class EspacoController {
   }
 
   @PostMapping
-  public void criar(@RequestBody final CriarEspacoRequest request) {
+  public void criar(@Valid @RequestBody final CriarEspacoRequest request) {
     service.criar(request);
   }
 
   @PutMapping("/{id}")
-  public void editar(@PathVariable final Long id, @RequestBody final CriarEspacoRequest request) {
+  public void editar(
+      @PathVariable final Long id,
+      @Valid @RequestBody final CriarEspacoRequest request
+  ) {
     service.editar(id, request);
   }
 
